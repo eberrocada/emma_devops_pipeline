@@ -1,0 +1,123 @@
+{
+    "name": "50% ",
+    "children": [
+        {
+            "name": "Blue",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "origin",
+                    "options": {
+                        "originType": "CUSTOMER",
+                        "forwardHostHeader": "REQUEST_HOST_HEADER",
+                        "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                        "compress": true,
+                        "enableTrueClientIp": true,
+                        "trueClientIpHeader": "True-Client-IP",
+                        "trueClientIpClientSetting": false,
+                        "verificationMode": "CUSTOM",
+                        "originSni": true,
+                        "httpPort": 80,
+                        "httpsPort": 443,
+                        "hostname": "${env.originHostname}",
+                        "originCertificate": "",
+                        "ports": "",
+                        "customValidCnValues": [
+                            "{{Origin Hostname}}",
+                            "{{Forward Host Header}}"
+                        ],
+                        "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                        "standardCertificateAuthorities": [
+                            "akamai-permissive"
+                        ]
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "matchVariable",
+                    "options": {
+                        "matchOperator": "IS_LESS_THAN_OR_EQUAL_TO",
+                        "variableName": "PMUSER_RANDOM1",
+                        "variableExpression": "50"
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
+        },
+        {
+            "name": "Green",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "origin",
+                    "options": {
+                        "originType": "CUSTOMER",
+                        "forwardHostHeader": "REQUEST_HOST_HEADER",
+                        "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                        "compress": true,
+                        "enableTrueClientIp": true,
+                        "trueClientIpHeader": "True-Client-IP",
+                        "trueClientIpClientSetting": false,
+                        "verificationMode": "CUSTOM",
+                        "originSni": true,
+                        "httpPort": 80,
+                        "httpsPort": 443,
+                        "hostname": "${env.originHostname}",
+                        "originCertificate": "",
+                        "ports": "",
+                        "customValidCnValues": [
+                            "{{Origin Hostname}}",
+                            "{{Forward Host Header}}"
+                        ],
+                        "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                        "standardCertificateAuthorities": [
+                            "akamai-permissive"
+                        ]
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "matchVariable",
+                    "options": {
+                        "matchOperator": "IS_GREATER_THAN",
+                        "variableName": "PMUSER_RANDOM1",
+                        "variableExpression": "50"
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""
+        }
+    ],
+    "behaviors": [
+        {
+            "name": "setVariable",
+            "options": {
+                "valueSource": "GENERATE",
+                "transform": "NONE",
+                "variableName": "PMUSER_RANDOM1",
+                "generator": "RAND",
+                "minRandomNumber": "1",
+                "maxRandomNumber": "100"
+            }
+        }
+    ],
+    "criteria": [
+        {
+            "name": "path",
+            "options": {
+                "matchOperator": "MATCHES_ONE_OF",
+                "matchCaseSensitive": false,
+                "values": [
+                    "/randomcolor/*"
+                ],
+                "normalize": false
+            }
+        }
+    ],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}

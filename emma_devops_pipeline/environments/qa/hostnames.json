@@ -1,0 +1,8 @@
+[
+    {
+        "cnameFrom": "qa.emma_devops_pipeline",
+        "cnameTo": "qa.emma_devops_pipeline.edgekey.net",
+        "cnameType": "EDGE_HOSTNAME",
+        "edgeHostnameId": null
+    }
+]

@@ -1,0 +1,17 @@
+{
+    "name": "dev",
+    "propertyName": "dev.emma_devops_pipeline",
+    "groupId": 229585,
+    "isSecure": true,
+    "propertyId": 885454,
+    "latestVersionInfo": {
+        "propertyVersion": 1,
+        "updatedByUser": "eberroca",
+        "updatedDate": "2023-02-14T00:24:09Z",
+        "productionStatus": "INACTIVE",
+        "stagingStatus": "INACTIVE",
+        "productId": "prd_Fresca",
+        "ruleFormat": "v2023-01-05"
+    },
+    "suggestedRuleFormat": "v2023-01-05"
+}

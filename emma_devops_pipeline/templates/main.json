@@ -1,0 +1,67 @@
+{
+    "rules": {
+        "name": "default",
+        "children": [
+            "#include:CP_codes.json",
+            "#include:Caching_Rule.json",
+            "#include:Remove_Vary_Header.json",
+            "#include:Access_Control_STG.json",
+            "#include:Deny_with_no_header.json",
+            "#include:Akamaizer.json",
+            "#include:_origin1_.json",
+            "#include:_origin2_.json",
+            "#include:50%_.json",
+            "#include:1_3.json"
+        ],
+        "behaviors": [
+            {
+                "name": "origin",
+                "options": {
+                    "cacheKeyHostname": "REQUEST_HOST_HEADER",
+                    "compress": true,
+                    "enableTrueClientIp": true,
+                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "originCertificate": "",
+                    "originSni": true,
+                    "originType": "CUSTOMER",
+                    "ports": "",
+                    "trueClientIpClientSetting": false,
+                    "trueClientIpHeader": "True-Client-IP",
+                    "verificationMode": "CUSTOM",
+                    "hostname": "${env.originHostname}",
+                    "customValidCnValues": [
+                        "{{Origin Hostname}}",
+                        "{{Forward Host Header}}"
+                    ],
+                    "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                    "standardCertificateAuthorities": [
+                        "akamai-permissive"
+                    ]
+                }
+            }
+        ],
+        "uuid": "default",
+        "options": {
+            "is_secure": true
+        },
+        "variables": [
+            {
+                "name": "PMUSER_RANDOM2",
+                "value": "",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
+            },
+            {
+                "name": "PMUSER_RANDOM1",
+                "value": "",
+                "description": "",
+                "hidden": false,
+                "sensitive": false
+            }
+        ],
+        "comments": ""
+    }
+}

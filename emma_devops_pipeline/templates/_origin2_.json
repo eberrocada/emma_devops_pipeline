@@ -1,0 +1,48 @@
+{
+    "name": "/origin2/",
+    "children": [],
+    "behaviors": [
+        {
+            "name": "origin",
+            "options": {
+                "originType": "CUSTOMER",
+                "forwardHostHeader": "REQUEST_HOST_HEADER",
+                "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                "compress": true,
+                "enableTrueClientIp": true,
+                "trueClientIpHeader": "True-Client-IP",
+                "trueClientIpClientSetting": false,
+                "verificationMode": "CUSTOM",
+                "originSni": true,
+                "httpPort": 80,
+                "httpsPort": 443,
+                "hostname": "${env.originHostname}",
+                "originCertificate": "",
+                "ports": "",
+                "customValidCnValues": [
+                    "{{Origin Hostname}}",
+                    "{{Forward Host Header}}"
+                ],
+                "originCertsToHonor": "STANDARD_CERTIFICATE_AUTHORITIES",
+                "standardCertificateAuthorities": [
+                    "akamai-permissive"
+                ]
+            }
+        }
+    ],
+    "criteria": [
+        {
+            "name": "path",
+            "options": {
+                "matchOperator": "MATCHES_ONE_OF",
+                "matchCaseSensitive": false,
+                "values": [
+                    "/origin2/*"
+                ],
+                "normalize": false
+            }
+        }
+    ],
+    "criteriaMustSatisfy": "all",
+    "comments": ""
+}
